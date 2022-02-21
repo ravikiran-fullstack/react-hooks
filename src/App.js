@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [value, setValue] = useState("Ravikiran"); // cant use useState conditionally, or inside the function
+  const [names, setNames] = useState([]);
+
+  const [flag, setFlag] = useState(false);
+
+  const changeName = () => {
+    setValue("Ravikiran Yadav");
+    setFlag(true);
+  };
+
+  const addNames = (e) => {
+    e.preventDefault();
+
+    setNames([...names, { id: names.length, name: value }]);
+    console.log(names);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div>Hello {flag ? value : ""}</div>
+      <button onClick={changeName}>Change name</button>
+      <hr />
+      <hr />
+      <form onSubmit={addNames}>
+        <input
+          type='text'
+          value={value}
+          placeholder='add name'
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <button type='submit'>Add Names</button>
+      </form>
+      <ol>
+        {names.map((item) => {
+          return <li key={item.id}>{item.name}</li>;
+        })}
+      </ol>
     </div>
   );
 }
