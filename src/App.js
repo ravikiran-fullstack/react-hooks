@@ -1,43 +1,14 @@
 import { useState } from "react";
-
+import EffectHook from "./EffectHook";
 function App() {
-  const [value, setValue] = useState("Ravikiran"); // cant use useState conditionally, or inside the function
-  const [names, setNames] = useState([]);
-
-  const [flag, setFlag] = useState(false);
-
-  const changeName = () => {
-    setValue("Ravikiran Yadav");
-    setFlag(true);
-  };
-
-  const addNames = (e) => {
-    e.preventDefault();
-
-    setNames([...names, { id: names.length, name: value }]);
-    console.log(names);
-  };
+  const [flag, setFlag] = useState(true);
 
   return (
-    <div className='App'>
-      <div>Hello {flag ? value : ""}</div>
-      <button onClick={changeName}>Change name</button>
-      <hr />
-      <hr />
-      <form onSubmit={addNames}>
-        <input
-          type='text'
-          value={value}
-          placeholder='add name'
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button type='submit'>Add Names</button>
-      </form>
-      <ol>
-        {names.map((item) => {
-          return <li key={item.id}>{item.name}</li>;
-        })}
-      </ol>
+    <div>
+      <div>
+        <button onClick={() => setFlag(!flag)}>Toggle</button>
+      </div>
+      <div>{flag && <EffectHook></EffectHook>}</div>
     </div>
   );
 }
