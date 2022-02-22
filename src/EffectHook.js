@@ -9,6 +9,7 @@ const EffectHook = () => {
     const interval = setInterval(showDate, 1000);
 
     return () => {
+      // perform clean ups in this function
       console.log("clean up of interval");
       clearInterval(interval);
     };
