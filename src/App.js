@@ -2,6 +2,7 @@ import { useState } from "react";
 import EffectHook from "./EffectHook";
 import RefHook from "./RefHook";
 import MemoHook from "./MemoHook";
+import ContextHook from "./contextHook/ContextHook";
 
 function App() {
   const [flag, setFlag] = useState(true);
@@ -13,7 +14,8 @@ function App() {
       </div> */}
       {/* <div>{flag && <EffectHook></EffectHook>}</div> */}
       {/* <RefHook></RefHook> */}
-      <MemoHook></MemoHook>
+      {/* <MemoHook></MemoHook> */}
+      <ContextHook></ContextHook>
     </div>
   );
 }
