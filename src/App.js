@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import EffectHook from "./EffectHook";
 import RefHook from "./RefHook";
 import MemoHook from "./MemoHook";
 import ContextHook from "./contextHook/ContextHook";
+import ReducerHook from "./ReducerHook";
 
 function App() {
-  const [flag, setFlag] = useState(true);
+  // const [flag, setFlag] = useState(true);
 
   return (
     <div>
@@ -15,7 +16,10 @@ function App() {
       {/* <div>{flag && <EffectHook></EffectHook>}</div> */}
       {/* <RefHook></RefHook> */}
       {/* <MemoHook></MemoHook> */}
-      <ContextHook></ContextHook>
+      {/* <ContextHook></ContextHook> */}
+
+      {/* useReducer code */}
+      <ReducerHook></ReducerHook>
     </div>
   );
 }

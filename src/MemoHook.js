@@ -14,6 +14,10 @@ const MemoHook = () => {
     return factorial(counter);
   }, [counter]);
 
+  const displayName = () => {
+    return name;
+  };
+
   return (
     <div>
       <h1>
@@ -35,16 +39,16 @@ const MemoHook = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <DisplayName name={name}></DisplayName>
+        <DisplayName displayName={displayName}></DisplayName>
       </div>
     </div>
   );
 };
 
-const DisplayName = React.memo(({ name }) => {
-  console.log("name", name);
-  return <p>name is {name}</p>;
-});
+const DisplayName = ({ displayName }) => {
+  console.log("name");
+  return <p>name is {displayName()}</p>;
+};
 
 const factorial = (n) => {
   let i = 0;
